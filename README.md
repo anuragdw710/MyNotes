@@ -5,9 +5,10 @@
 
 ## Notes Website - A User-Friendly Note-Taking App
 
+## Objective:
 - This Django web application provides a comprehensive platform for creating, managing, and searching your notes. It empowers users to streamline their note-taking process and access their information from anywhere.
 
-Key Features:
+## Key Features:
 
 - User Authentication:
   - Secure login and registration functionalities ensure authorized access.
@@ -31,7 +32,25 @@ Key Features:
   - PostgreSQL or MySQL (Database)
   - React
 
-Pages:
+## How to Run the Application Locally
+
+To run this application locally, follow these steps:
+
+```bash
+# Clone the repository
+git clone https://github.com/anuragdw710/MyNotes
+
+# Navigate to the project directory
+cd MyNotes
+
+# Install dependencies
+npm install
+
+# Run the application
+npm run dev
+```
+
+## Pages:
 
 - Login page
 
@@ -42,13 +61,17 @@ Pages:
 ![alt text](/public/image2.png)
 
 - Notes List page
-  ![alt text](public/image3.png)
+
+![alt text](public/image3.png)
 
 - Create Notes page
-  ![alt text](public/image4.png)
+
+![alt text](public/image4.png)
 
 - Detail Note Page
-  ![alt text](public/image5.png)
+
+![alt text](public/image5.png)
 
 - Edit note page
-  ![alt text](public/image6.png)
+
+![alt text](public/image6.png)
