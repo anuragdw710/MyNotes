@@ -16,15 +16,15 @@ function LoginPage() {
       password: password,
     };
     axios
-      .post("http://127.0.0.1:8000/auth/jwt/create/", data)
+      .post("https://notesbackend-oxk3.onrender.com/auth/jwt/create/", data)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         const { access } = response.data;
         localStorage.setItem("jwtToken", access);
         navigate("/");
       })
       .catch((error) => {
-        console.log(error.response.data);
+        // console.log(error.response.data);
         setError("error----", error.response.data);
       });
     // if (isAuthenticated) {

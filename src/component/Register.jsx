@@ -15,16 +15,16 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = { email, username, password, first_name, last_name };
-    console.log(data);
+    // console.log(data);
 
     axios
-      .post("http://127.0.0.1:8000/auth/users/", data)
+      .post("https://notesbackend-oxk3.onrender.com/auth/users/", data)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         navigate("/login");
       })
       .catch((error) => {
-        console.log(error.response.data);
+        // console.log(error.response.data);
         setError("error----", error.response.data);
       });
   };

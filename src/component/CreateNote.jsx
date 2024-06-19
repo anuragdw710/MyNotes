@@ -20,7 +20,7 @@ const CreateNote = () => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/todo/notes/",
+        "https://notesbackend-oxk3.onrender.com/todo/notes/",
         { heading: heading, description: description },
         {
           headers: {
@@ -29,7 +29,7 @@ const CreateNote = () => {
         }
       );
 
-      console.log("Note created successfully:", response.data);
+      // console.log("Note created successfully:", response.data);
       navigate("/"); // Redirect to notes list on successful creation
     } catch (error) {
       console.error("Error creating note:", error);

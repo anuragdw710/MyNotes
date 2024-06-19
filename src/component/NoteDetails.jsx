@@ -26,14 +26,14 @@ const NoteDetails = () => {
           return;
         }
         const response = await axios.get(
-          `http://127.0.0.1:8000/todo/notes/${id}`,
+          `https://notesbackend-oxk3.onrender.com/todo/notes/${id}`,
           {
             headers: {
               Authorization: `JWT ${jwtToken}`,
             },
           }
         );
-        console.log("Note details:", response.data);
+        // console.log("Note details:", response.data);
         setNote(response.data);
         setError(null);
         setUpdatedHeading(response.data.heading); // Set initial values for editing
@@ -76,7 +76,7 @@ const NoteDetails = () => {
       }
 
       const response = await axios.put(
-        `http://127.0.0.1:8000/todo/notes/${id}`,
+        `https://notesbackend-oxk3.onrender.com/todo/notes/${id}`,
         {
           headers: {
             Authorization: `JWT ${jwtToken}`,
@@ -85,7 +85,7 @@ const NoteDetails = () => {
         updateData
       );
 
-      console.log("Note updated successfully:", response.data);
+      // console.log("Note updated successfully:", response.data);
       setNote(response.data); // Update local state with updated note
       setIsEditing(false); // Exit edit mode
     } catch (error) {
@@ -109,11 +109,14 @@ const NoteDetails = () => {
         navigate("/login");
         return;
       }
-      await axios.delete(`http://127.0.0.1:8000/todo/notes/${id}`, {
-        headers: {
-          Authorization: `JWT ${jwtToken}`,
-        },
-      });
+      await axios.delete(
+        `https://notesbackend-oxk3.onrender.com/todo/notes/${id}`,
+        {
+          headers: {
+            Authorization: `JWT ${jwtToken}`,
+          },
+        }
+      );
       console.log("Note deleted successfully.");
       navigate("/");
       // Redirect to a proper location after deletion (e.g., notes list)

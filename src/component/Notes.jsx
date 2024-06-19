@@ -19,12 +19,15 @@ const Notes = () => {
     }
 
     try {
-      const response = await axios.get("http://127.0.0.1:8000/todo/notes/", {
-        headers: {
-          Authorization: `JWT ${jwtToken}`,
-        },
-      });
-      console.log(response.data);
+      const response = await axios.get(
+        "https://notesbackend-oxk3.onrender.com/todo/notes/",
+        {
+          headers: {
+            Authorization: `JWT ${jwtToken}`,
+          },
+        }
+      );
+      // console.log(response.data);
       setdata(response.data);
       setError(null); // Clear any previous errors
     } catch (error) {
