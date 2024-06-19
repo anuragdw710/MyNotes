@@ -201,3 +201,10 @@ form > div {
 .create-note-textarea:hover {
   background-color: #f0f8ff;
 }
+.information-bar {
+  background-color: #ffcc00;
+  color: #333;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+}

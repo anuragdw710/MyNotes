@@ -6,11 +6,12 @@ import NoteDetails from "./component/NoteDetails";
 import CreateNote from "./component/CreateNote";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./component/Navbar";
-
+import InformationBar from "./component/InformationBar";
 function App() {
   return (
     <div className="outer">
       <Router>
+        <InformationBar />
         <Navbar />
         <Routes>
           <Route path="/" element={<Notes />} />
