@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CreateNote = () => {
   const [heading, setHeading] = useState("");
@@ -38,26 +38,35 @@ const CreateNote = () => {
   };
 
   return (
-    <div>
-      <h2>Create Note</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="heading">Heading:</label>
-        <input
-          type="text"
-          id="heading"
-          name="heading"
-          value={heading}
-          onChange={(e) => setHeading(e.target.value)}
-        />
-        <label htmlFor="description">Description:</label>
-        <textarea
-          id="description"
-          name="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <button type="submit">Create Note</button>
-      </form>
+    <div className="note-details">
+      <div>
+        <h2>Create Note</h2>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="heading">Heading:</label>
+          <input
+            type="text"
+            id="heading"
+            name="heading"
+            value={heading}
+            onChange={(e) => setHeading(e.target.value)}
+            className="edit-input"
+          />
+          <label htmlFor="description">Description:</label>
+          <textarea
+            id="description"
+            name="description"
+            className="create-note-textarea"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <div className="note-button-box">
+            <button type="submit">Create Note</button>
+          </div>
+        </form>
+      </div>
+      <Link to="/" className="back-link">
+        Back
+      </Link>
     </div>
   );
 };

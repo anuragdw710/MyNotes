@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
-import "../styles/style.css";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import "../styles/style.css"; // Assuming your CSS file is named style.css
 
 const Notes = () => {
   const [data, setdata] = useState([]);
@@ -34,31 +33,35 @@ const Notes = () => {
       navigate("/login");
     }
   };
+
   const handleCreateNoteClick = () => {
-    navigate("/notes/");
+    navigate("/notes/"); // Corrected path for creating a new note
   };
 
   useEffect(() => {
     fetchNotes(); // Fetch notes on component mount
   }, []);
+
   return (
-    <div>
-      <h1>Notes</h1>
+    <div className="note">
+      <h1 className="heading-note">Notes</h1>
       {error ? (
         <p className="error-message">{error}</p>
       ) : (
         <ul>
           {data.map((note) => (
-            <li key={note.id}>
-              <Link to={`/notes/${note.id}`}>
-                {note.heading} - {note.writer} (created:{" "}
-                {note.created_at.slice(0, 10)})
+            <li key={note.id} className="notelist">
+              <Link to={`/notes/${note.id}`} className="link notelink">
+                <h2>{note.heading}</h2>
+                <p>{note.created_at.slice(0, 10)}</p>
               </Link>
             </li>
           ))}
         </ul>
       )}
-      <button onClick={handleCreateNoteClick}>New Note</button>
+      <div className="newnote">
+        <button onClick={handleCreateNoteClick}>Create New Note</button>
+      </div>
     </div>
   );
 };

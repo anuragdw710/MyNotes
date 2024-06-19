@@ -1,6 +1,7 @@
 import "../styles/style.css";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -9,6 +10,7 @@ const Register = () => {
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,6 +21,7 @@ const Register = () => {
       .post("http://127.0.0.1:8000/auth/users/", data)
       .then((response) => {
         console.log(response);
+        navigate("/login");
       })
       .catch((error) => {
         console.log(error.response.data);

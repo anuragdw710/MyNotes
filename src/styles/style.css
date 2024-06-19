@@ -1,39 +1,136 @@
 /* General Styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  background-image: linear-gradient(to right, #2e3192, #1bffff);
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  box-sizing: border-box;
 }
 
-/* Container Styles */
+/* navbar style */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #efe8e8;
+  height: 70px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  margin-right: 2rem;
+  background-image: linear-gradient(to right, #f0f8ff, #d6e0e6);
+  border: none;
+  color: #333;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+.nav-links li a:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* notes style */
+
+.note {
+  width: 100%;
+  padding: 50px;
+}
+.notelist {
+  padding: 5px;
+  list-style-type: none;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
+.link,
+li {
+  text-decoration: none;
+}
+.notelink {
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.notelist :hover {
+  background-color: white;
+  /* padding: 2px; */
+  color: black;
+}
+
+.newnote {
+  display: flex;
+  justify-content: center;
+}
+
+.heading-note {
+  color: rgb(242, 136, 136);
+  margin: 20px;
+  text-align: center;
+}
+
+/* Buttom style */
+button {
+  background-image: linear-gradient(to right, #f0f8ff, #d6e0e6);
+  border: none;
+  color: #333;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Login style */
 .container {
   background-color: #fff;
   padding: 2rem;
+  margin: auto;
+  margin-top: 50px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-width: 400px;
   width: 100%;
   box-sizing: border-box;
 }
-
 h1,
 h2 {
   text-align: center;
   margin-bottom: 1.5rem;
   color: #333;
 }
-
 form {
   display: flex;
   flex-direction: column;
 }
-
-/* Input Styles */
 input {
   margin-bottom: 1rem;
   padding: 0.75rem;
@@ -42,54 +139,65 @@ input {
   font-size: 1rem;
   box-sizing: border-box;
 }
-
-/* Button Styles */
-button {
-  padding: 0.75rem;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-/* Error Message Styles */
 .error-message {
   color: red;
   margin-bottom: 1rem;
   font-size: 0.875rem;
 }
-
-/* Label Styles */
 label {
   margin-bottom: 0.5rem;
   font-size: 1rem;
   color: #555;
 }
-
-/* Form Group Styles */
 form > div {
   margin-bottom: 1rem;
 }
 
+/* note-details page */
 .note-details {
+  background-color: white;
+  margin: 10px;
   padding: 20px;
 }
 
-.error-message {
-  color: red;
+.note-text {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f0f8ff;
+  margin: 20px;
 }
 
-.edit-input,
-.edit-textarea {
-  width: 100%;
-  padding: 5px;
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
+.note-detail {
+  display: flex;
+  justify-content: space-between;
+}
+.note-button-box {
+  display: flex;
+  justify-content: space-around;
+}
+
+.back-link {
+  text-decoration: none;
+  color: white;
+  background-color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px;
+}
+.back-link:hover {
+  background-color: rgb(210, 208, 208);
+  color: #333;
+}
+.create-note-textarea {
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+  height: 300px;
+  font-size: 20px;
+}
+.edit-input:hover,
+.create-note-textarea:hover {
+  background-color: #f0f8ff;
 }
