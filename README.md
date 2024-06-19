@@ -1,3 +1,8 @@
+#### Links:
+- Backend- [NotesBackend](https://github.com/anuragdw710/NotesBackend)
+- Frontend- [MyNotes](https://github.com/anuragdw710/MyNotes/)
+- Live - [my-notes](https://my-notes-eight-hazel.vercel.app/)
+
 ## Notes Website - A User-Friendly Note-Taking App
 
 - This Django web application provides a comprehensive platform for creating, managing, and searching your notes. It empowers users to streamline their note-taking process and access their information from anywhere.
