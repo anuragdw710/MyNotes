@@ -1,8 +1,49 @@
-# React + Vite
+## Notes Website - A User-Friendly Note-Taking App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- This Django web application provides a comprehensive platform for creating, managing, and searching your notes. It empowers users to streamline their note-taking process and access their information from anywhere.
 
-Currently, two official plugins are available:
+Key Features:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- User Authentication:
+  - Secure login and registration functionalities ensure authorized access.
+  - User accounts allow personalized note management.
+- CRUD Operations:
+  - Create: Effortlessly jot down new notes.
+  - Read: View all your notes or search for specific ones.
+  - Update: Edit existing notes to keep them current.
+  - Delete: Organize by removing notes you no longer need.
+- Search Functionality:
+  - Quickly find relevant notes using a powerful search bar.
+  - Filter notes based on keywords or criteria for targeted results.
+- Intuitive Interface:
+
+  - User-friendly design simplifies note creation and management.
+  - Streamlined navigation enhances the overall user experience.
+
+- Technical Stack (Replace with your specific libraries):
+  - Django (Python web framework)
+  - Django REST framework (API development)
+  - PostgreSQL or MySQL (Database)
+  - React
+
+Pages:
+
+- Login page
+
+![alt text](/public/image.png)
+
+- Register Page
+
+![alt text](/public/image2.png)
+
+- Notes List page
+  ![alt text](public/image3.png)
+
+- Create Notes page
+  ![alt text](public/image4.png)
+
+- Detail Note Page
+  ![alt text](public/image5.png)
+
+- Edit note page
+  ![alt text](public/image6.png)
