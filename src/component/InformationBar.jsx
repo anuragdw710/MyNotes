@@ -1,4 +1,4 @@
-import "../assets/styles/InformationBar.css";
+import "../styles/style.css";
 
 const InformationBar = () => {
   return (
