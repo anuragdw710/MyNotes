@@ -30,6 +30,10 @@ const Navbar = () => {
           />
         </svg>
       </Link>
+      <p className="nav-title">
+        Not want to register 🤔! <strong>Try</strong> [ Username: sample1,
+        Password:abcd@123]
+      </p>
       <ul className="nav-links">
         {!isLoggedIn && (
           <>
