@@ -1,5 +1,5 @@
 import "../styles/style.css";
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -7,32 +7,34 @@ function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
-    const data = {
-      username: username,
-      password: password,
-    };
-    axios
-      .post("https://notesbackend-oxk3.onrender.com/auth/jwt/create/", data)
-      .then((response) => {
-        // console.log(response.data);
-        const { access } = response.data;
-        localStorage.setItem("jwtToken", access);
-        navigate("/");
-      })
-      .catch((error) => {
-        // console.log(error.response.data);
-        setError("error----", error.response.data);
-      });
-    // if (isAuthenticated) {
-    //   navigate("/dashboard");
-    // } else {
-    //   console.error("Authentication failed");
-    // }
+    setIsLoading(true);
+    try {
+      const data = {
+        username: username,
+        password: password,
+      };
+      const response = await axios.post(
+        "https://notesbackend-oxk3.onrender.com/auth/jwt/create/",
+        data
+      );
+      const { access } = response.data;
+      localStorage.setItem("jwtToken", access);
+      navigate("/");
+    } catch (err) {
+      console.log("Login error-----------------", err?.response?.data.detail);
+      if (err?.response?.data) setError(err.response.data.detail);
+    } finally {
+      setIsLoading(false);
+    }
   };
+  useEffect(() => {
+    setError("");
+  }, []);
 
   return (
     <div className="container">
@@ -56,8 +58,11 @@ function LoginPage() {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? "Loading..." : "Login"}
+        </button>
       </form>
+      {error && <div className="error-message">{error}</div>}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import "../styles/style.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -10,24 +10,29 @@ const Register = () => {
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const data = { email, username, password, first_name, last_name };
-    // console.log(data);
-
-    axios
-      .post("https://notesbackend-oxk3.onrender.com/auth/users/", data)
-      .then((response) => {
-        // console.log(response);
-        navigate("/login");
-      })
-      .catch((error) => {
-        // console.log(error.response.data);
-        setError("error----", error.response.data);
-      });
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setIsLoading(true);
+    try {
+      const data = { email, username, password, first_name, last_name };
+      const response = await axios.post(
+        "https://notesbackend-oxk3.onrender.com/auth/users/",
+        data
+      );
+      navigate("/login");
+    } catch (err) {
+      console.log("Login error-----------------", err.response.data);
+      if (err?.response?.data) setError(err.response.data);
+    } finally {
+      setIsLoading(false);
+    }
   };
+  useEffect(() => {
+    setError("");
+  }, []);
 
   return (
     <div className="container">
@@ -63,7 +68,9 @@ const Register = () => {
           value={last_name}
           onChange={(e) => setLastName(e.target.value)}
         />
-        <button type="submit">Register</button>
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? "Loading..." : "Register"}
+        </button>
       </form>
       {error.email && <p className="error-message">{error.email}</p>}
       {error.username && <p className="error-message">{error.username}</p>}
