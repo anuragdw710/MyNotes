@@ -7,6 +7,7 @@ const Notes = () => {
   const [data, setdata] = useState([]);
   const [error, setError] = useState(null); // State for error handling
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchNotes = async () => {
     const jwtToken = localStorage.getItem("jwtToken");
@@ -17,7 +18,7 @@ const Notes = () => {
       navigate("/login");
       return;
     }
-
+    setIsLoading(true);
     try {
       const response = await axios.get(
         "https://notesbackend-oxk3.onrender.com/todo/notes/",
@@ -34,6 +35,8 @@ const Notes = () => {
       console.error("Error fetching notes:", error);
       setError("Failed to retrieve notes."); // Set user-friendly error message
       navigate("/login");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -61,6 +64,72 @@ const Notes = () => {
             </li>
           ))}
         </ul>
+      )}
+      {isLoading && (
+        <svg
+          width="100"
+          height="100"
+          viewBox="0 0 200 200"
+          style={{ display: "block", margin: "0 auto" }}
+        >
+          <circle
+            fill="#FF156D"
+            stroke="#FF156D"
+            strokeWidth="15"
+            r="15"
+            cx="40"
+            cy="65"
+          >
+            <animate
+              attributeName="cy"
+              calcMode="spline"
+              dur="2s"
+              values="65;135;65;"
+              keyTimes="0;0.5;1"
+              keySplines=".5 0 .5 1;.5 0 .5 1"
+              repeatCount="indefinite"
+              begin="-0.4s" // Adjust timing for bouncing effect
+            />
+          </circle>
+          <circle
+            fill="#FF156D"
+            stroke="#FF156D"
+            strokeWidth="15"
+            r="15"
+            cx="100"
+            cy="65"
+          >
+            <animate
+              attributeName="cy"
+              calcMode="spline"
+              dur="2s"
+              values="65;135;65;"
+              keyTimes="0;0.5;1"
+              keySplines=".5 0 .5 1;.5 0 .5 1"
+              repeatCount="indefinite"
+              begin="-0.2s" // Adjust timing for bouncing effect
+            />
+          </circle>
+          <circle
+            fill="#FF156D"
+            stroke="#FF156D"
+            strokeWidth="15"
+            r="15"
+            cx="160"
+            cy="65"
+          >
+            <animate
+              attributeName="cy"
+              calcMode="spline"
+              dur="2s"
+              values="65;135;65;"
+              keyTimes="0;0.5;1"
+              keySplines=".5 0 .5 1;.5 0 .5 1"
+              repeatCount="indefinite"
+              begin="0s" // Adjust timing for bouncing effect
+            />
+          </circle>
+        </svg>
       )}
       <div className="newnote">
         <button onClick={handleCreateNoteClick}>Create New Note</button>
