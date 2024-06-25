@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -6,6 +6,7 @@ const CreateNote = () => {
   const [heading, setHeading] = useState("");
   const [description, setDescription] = useState("");
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
@@ -15,8 +16,10 @@ const CreateNote = () => {
     if (!jwtToken) {
       // No JWT token present, handle error
       console.error("Missing JWT token");
+      navigate("/login");
       return;
     }
+    setIsLoading(true);
 
     try {
       const response = await axios.post(
@@ -34,6 +37,8 @@ const CreateNote = () => {
     } catch (error) {
       console.error("Error creating note:", error);
       // Handle errors here (e.g., display error message)
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -60,7 +65,9 @@ const CreateNote = () => {
             onChange={(e) => setDescription(e.target.value)}
           />
           <div className="note-button-box">
-            <button type="submit">Create Note</button>
+            <button type="submit" disabled={isLoading}>
+              {isLoading ? "Loading..." : "Create Note"}
+            </button>
           </div>
         </form>
       </div>
